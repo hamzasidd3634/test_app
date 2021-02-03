@@ -38,6 +38,7 @@ dependencies:
   provider: ^4.3.3
   path_provider_ex: ^1.0.1
   permission_handler: ^5.0.1+1
+#  file_picker: ^2.1.6
   file_picker:
     path: ../pdf_viewer/flutter_file_picker-master
 

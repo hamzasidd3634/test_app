@@ -23,7 +23,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver {
-  static const platform = const MethodChannel('it.hamza/pdfViewer');
+  static const platforms = const MethodChannel('it.hamza/pdfViewer');
 
   TabController tabController;
   List<PDFFiles> pdfFiles = new List();
@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage>
         final provider1 = Provider.of<LocalDbProvider>(context, listen: false);
         provider1.recentPDFS();
         var args = {'url': element.path};
-        platform.invokeMethod('viewPdf', args);
+        platforms.invokeMethod('viewPdf', args);
       },
       child: Customs().card(element, size, context, listIndex),
     );
@@ -307,15 +307,21 @@ class _HomePageState extends State<HomePage>
   }
 
   filePicker() async {
-    FilePickerResult result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['pdf'],
-    );
+    FilePickerResult result;
+    try{
+      result = await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['pdf'],
+      );
+    } on PlatformException catch (e) {
+      print("Unsupported operation" + e.toString());
+    }
     if (result != null) {
       PlatformFile file = result.files.first;
 
       var args = {'url': file.path};
-      platform.invokeMethod('viewPdf', args);
+      platforms.invokeMethod('viewPdf', args);
+
     }
   }
 
