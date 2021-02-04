@@ -42,6 +42,9 @@ dependencies:
   file_picker:
     path: ../pdf_viewer/flutter_file_picker-master
 
+#  widget:
+#    git: git@github.com:git.ghostscript.com/mupdf-android-viewer.git
+
 #  module:
 #    path: ../f
 

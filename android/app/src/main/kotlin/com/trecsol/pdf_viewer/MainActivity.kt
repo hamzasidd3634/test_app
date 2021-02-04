@@ -1,16 +1,22 @@
 package com.trecsol.pdf_viewer
 
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import android.system.OsConstants.EBUSY
-import androidx.annotation.NonNull
-import com.artifex.mupdf.viewer.DocumentActivity
+import androidx.annotation.NonNull/*
+import com.artifex.mupdf.viewer.DocumentActivity;
+import com.artifex.mupdf.fitz.PDFPage;*/
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import tech.qiji.android.mupdf.MuPDFActivity
 import java.io.File
+
+
+
 
 
 class MainActivity: FlutterActivity() {
@@ -27,7 +33,7 @@ class MainActivity: FlutterActivity() {
 
                                 val file = File(url)
                                 val uri: Uri = Uri.fromFile(file)
-                                val intent = Intent(this, DocumentActivity::class.java)
+                                val intent = Intent(this, MuPDFActivity::class.java)
                                 intent.action = Intent.ACTION_VIEW
                                 intent.data = uri
                                 startActivity(intent)
