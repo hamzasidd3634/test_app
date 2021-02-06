@@ -2,6 +2,13 @@
 -keep class io.flutter.plugins.**{*;}
 -keep class androidx.lifecycle.**{*;}
 -keep class com.mr.**{*;}
+-dontnote junit.**
+-dontwarn kotlin.**
+-dontwarn module-info
+-dontwarn sun.reflect.**
+-dontwarn android.test.**
+-dontwarn java.lang.management.**
+
 
 #-keep class com.mr.flutter.plugin.**{*;}
 #-keep class com.mr.flutter.plugin.filepicker.**{*;}

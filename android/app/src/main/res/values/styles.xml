@@ -8,7 +8,6 @@
     </style>
     -<style parent="@android:style/Theme.NoTitleBar.Fullscreen" name="AppBaseTheme">
 
-    <item name="android:windowBackground">@drawable/tiled_background</item>
 
     </style>
     <!-- Theme applied to the Android Window as soon as the process has started.
@@ -20,4 +19,5 @@
     <style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    <style parent="Theme.AppCompat.Light.Dialog.Alert" name="AlertDialogTheme"/>
 </resources>

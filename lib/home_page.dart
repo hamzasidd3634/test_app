@@ -8,7 +8,6 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 import 'package:pdf_viewer/customization/custom_card.dart';
 import 'package:pdf_viewer/provider/pdf_provider.dart';
-import 'package:pdf_viewer/provider/localdb_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:unicorndial/unicorndial.dart';
@@ -39,8 +38,8 @@ class _HomePageState extends State<HomePage>
     WidgetsBinding.instance.addObserver(this);
     final provider = Provider.of<PDFProvider>(context, listen: false);
     provider.allPDFS(context);
-    final provider1 = Provider.of<LocalDbProvider>(context, listen: false);
-    provider1.recentPDFS();
+    provider.recentPDFS(context);
+
 
     tabController = TabController(length: 2, vsync: this);
     tabController.addListener(() {
@@ -79,6 +78,9 @@ class _HomePageState extends State<HomePage>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
+      // final provider = Provider.of<PDFProvider>(context, listen: false);
+      // provider.allPDFS(context);
+      // provider.recentPDFS(context);
     } else {
       print(state.toString());
     }
@@ -90,7 +92,7 @@ class _HomePageState extends State<HomePage>
     //       .millisecondsSinceEpoch
     //       .compareTo(DateTime.parse(a.changedDate).millisecondsSinceEpoch));
     return GroupedListView<PDFFiles, DateTime>(
-        elements: provider.pdfListing,
+        elements: provider.pdfListingRecent,
         physics: AlwaysScrollableScrollPhysics(),
         order: GroupedListOrder.ASC,
         floatingHeader: true,
@@ -145,8 +147,8 @@ class _HomePageState extends State<HomePage>
     return InkWell(
       onTap: () {
         addItem(element);
-        final provider1 = Provider.of<LocalDbProvider>(context, listen: false);
-        provider1.recentPDFS();
+        final provider = Provider.of<PDFProvider>(context, listen: false);
+        provider.recentPDFS(context);
         var args = {'url': element.path};
         platforms.invokeMethod('viewPdf', args);
       },
@@ -328,8 +330,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PDFProvider>(context);
-    final provider1 = Provider.of<LocalDbProvider>(context);
-    GlobalVariables.globalList = provider1.pdfListing;
+    GlobalVariables.globalList = provider.pdfListingRecent;
 
     return MaterialApp(
       //  navigatorKey: Catcher.navigatorKey,
@@ -371,7 +372,7 @@ class _HomePageState extends State<HomePage>
             backgroundColor: Colors.transparent,
           ),
           appBar: appBar(),
-          body: provider1.loading
+          body: provider.loading
               ? Center(
                   child: CircularProgressIndicator(
                     backgroundColor: Colors.red,
@@ -402,7 +403,7 @@ class _HomePageState extends State<HomePage>
                                 child: Container(
                                     height: MediaQuery.of(context).size.height /
                                         1.5,
-                                    child: list(provider1)),
+                                    child: list(provider)),
                               ),
                               SizedBox(
                                 height: 5,

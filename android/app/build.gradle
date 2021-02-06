@@ -32,8 +32,23 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     compileSdkVersion 29
 
+    flavorDimensions "one-dimension"
+
+    productFlavors {
+        mupdf {
+        }
+    }
+
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        mupdf {
+            java {
+                /*
+                 * Include all files from the main sourceset in this
+                 * release.
+                 */
+                srcDir "src/main"
+            }
+        }
     }
 
     lintOptions {
@@ -52,11 +67,21 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.trecsol.pdf_viewer"
-        minSdkVersion 19
+        minSdkVersion 21
 
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+        vectorDrawables {
+            /*
+             *  Do not generate pngs from vector drawable resources.
+             *
+             *  The vector drawables  can now be used directly on all
+             *  platforms we support.
+             */
+            useSupportLibrary = true
+        }
     }
     signingConfigs {
         release {
@@ -94,12 +119,27 @@ android {
 flutter {
     source '../..'
 }
-
 dependencies {
-    //api 'com.artifex.mupdf:viewer:1.15.+'
-    api 'com.artifex.mupdf:fitz:1.15.+'
-    implementation project(':libarary')
+ //   api 'com.artifex.mupdf:viewer:1.15.+'
+  //  api 'com.artifex.mupdf:fitz:1.15.+'
+ //   implementation project(':libs')
+  //  implementation 'com.github.qijitech:android-mupdf:'
+    implementation 'androidx.exifinterface:exifinterface:1.0.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+
+    implementation "androidx.core:core-ktx:+"
+
+    implementation 'com.madgag.spongycastle:core:1.58.0.0'
+    implementation 'com.madgag.spongycastle:prov:1.58.0.0'
+    implementation 'com.madgag.spongycastle:bcpkix-jdk15on:1.58.0.0'
+    implementation(name:'sodk_resources', ext:'aar')
+    implementation(name:'editor', ext:'aar')
+    implementation(name:'solib', ext:'aar')
+    implementation(name:'wheel', ext:'aar')
+    implementation(name:'mupdf', ext:'aar')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 }
+repositories {flatDir {dirs 'libs'}}
+

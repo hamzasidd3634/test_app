@@ -16,24 +16,43 @@ retrievingList() async {
     var extDir = await ExtStorage.getExternalStorageDirectory();
     //  var file = "$fileOrDir/pdf/";
     List contents = Directory(extDir).listSync();
-    for (dynamic fileOrDir in contents) {
-      String name1 = fileOrDir.runtimeType.toString();
+    recursiveMethod(contents);
 
-      if (name1 == '_Directory') {
-        List content = fileOrDir.listSync();
-        for (var newFile in content) {
-          var path = newFile.path;
-          String name = lookupMimeType(path);
-          if (name == "application/pdf") {
-            files.add(File(newFile.path));
-          }
-        }
-      }
-    }
   }else{
     exit(1);
   }
   return files;
+}
+
+recursiveMethod(contents){
+  for (dynamic fileOrDir in contents) {
+    String name1 = fileOrDir.runtimeType.toString();
+
+    if (name1 == '_Directory') {
+
+      List content = fileOrDir.listSync();
+      recursiveMethod(content);
+      // for (var newFile in content) {
+      //   String name = newFile.runtimeType.toString();
+      //   if (name == '_Directory'){
+      //     recursiveMethod(content);
+      //   }else{
+      //     var path = newFile.path;
+      //     String name = lookupMimeType(path);
+      //     if (name == "application/pdf") {
+      //       files.add(File(newFile.path));
+      //     }
+      //   }
+      //
+      // }
+    }else{
+      var path = fileOrDir.path;
+      String name = lookupMimeType(path);
+      if (name == "application/pdf") {
+        files.add(File(fileOrDir.path));
+      }
+    }
+  }
 }
 
 Future<void> checkPermissions() async {

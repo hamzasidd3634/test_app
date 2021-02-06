@@ -1,110 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
     <string name="app_name">PDF Viewer</string>
-    <string name="version">1.9a (git build)</string>
+    <string name="version">1.0</string>
+
     <string name="no_media_warning">Storage media not present</string>
 
     <string name="no_media_hint">Sharing the storage media with a PC can make it inaccessible</string>
 
-    <string name="cancel">Cancel</string>
+    <string name="dismiss">Dismiss</string>
 
-    <string name="search_backwards">Search backwards</string>
+    <string name="password">Password</string>
 
-    <string name="search_forwards">Search forwards</string>
-
-    <string name="search_document">Search document</string>
+    <string name="submit">Submit</string>
 
     <string name="picker_title_App_Ver_Dir">%1$s %2$s: %3$s</string>
 
-    <string name="outline_title">Table of Contents</string>
-
-    <string name="enter_password">Enter password</string>
-
-    <string name="text_not_found">Text not found</string>
-
-    <string name="searching_">Searching…</string>
-
-    <string name="toggle_links">Highlight and enable links</string>
-
-    <string name="no_further_occurrences_found">No further occurrences found</string>
-
-    <string name="select">Select</string>
-
-    <string name="search">Search</string>
-
-    <string name="copy">Copy</string>
-
-    <string name="strike_out">Strike-out</string>
-
-    <string name="delete">Delete</string>
-
-    <string name="highlight">Highlight</string>
-
-    <string name="underline">Underline</string>
-
-    <string name="edit_annotations">Edit annotations</string>
-
-    <string name="ink">Ink</string>
-
-    <string name="save">Save</string>
-
-    <string name="proof">Proof</string>
-
-    <string name="separation">Separation</string>
-
-    <string name="print">Print</string>
-
-    <string name="dismiss">Dismiss</string>
-
     <string name="parent_directory">[Up one level]</string>
 
-    <string name="yes">Yes</string>
+    <!-- Application Titles -->
 
-    <string name="no">No</string>
 
-    <string name="entering_reflow_mode">Entering reflow mode</string>
+    <string name="doc_editor_example">Document Editor Example</string>
 
-    <string name="leaving_reflow_mode">Leaving reflow mode</string>
+    <string name="png_export_example">PNG Document Export Example</string>
 
-    <string name="print_failed">Print failed</string>
+    <!-- Example Application Choices -->
 
-    <string name="select_text">Select text</string>
 
-    <string name="copied_to_clipboard">Copied to clipboard</string>
+    <string name="examples_titles">MuPDF Library Examples</string>
 
-    <string name="no_text_selected">No text selected</string>
 
-    <string name="draw_annotation">Draw annotation</string>
+    -<string-array name="examples_array">
 
-    <string name="nothing_to_save">Nothing to save</string>
+    <item>Standalone Document Conversion To PNG</item>
 
-    <string name="document_has_changes_save_them_">Document has changes. Save them?</string>
+    <item>Full Document Editor</item>
 
-    <string name="cannot_open_document">Cannot open document</string>
+    <item>Full Document Editor (custom UI)</item>
 
-    <string name="cannot_open_document_Reason">Cannot open document: %1$s</string>
+    <item>Full Document Editor (custom UI, Kotlin)</item>
 
-    <string name="cannot_open_file_Path">Cannot open file: %1$s</string>
+</string-array>
 
-    <string name="cannot_open_buffer">Cannot open buffer</string>
+    <!-- Document Editor Configuration Options -->
 
-    <string name="fill_out_text_field">Fill out text field</string>
 
-    <string name="okay">Okay</string>
 
-    <string name="choose_value">Choose value</string>
+    -<string-array name="config_array">
 
-    <string name="not_supported">Not supported</string>
+    <item>Editing Enable</item>
 
-    <string name="copy_text_to_the_clipboard">Copy text to the clipboard</string>
+    <item>Save As Enable</item>
 
-    <string name="more">More</string>
+    <item>Open In Enable</item>
 
-    <string name="accept">Accept</string>
+    <item>Sharing Enable</item>
 
-    <string name="copy_text">copy text</string>
+    <item>External Clipboard In Enable</item>
 
-    <string name="format_currently_not_supported">Format currently not supported</string>
+    <item>External Clipboard Out Enable</item>
 
-    <string name="toggle_reflow_mode">Toggle reflow mode</string>
+    <item>Printing Enable</item>
+
+    <item>Launch External Url Enable</item>
+
+    <item>Form Filling Enable</item>
+
+    <item>Form Signing Enable</item>
+
+    <item>Redactions Enable</item>
+
+    <item>Full Screen Enable</item>
+
+    <item>Invert Content In Dark Mode</item>
+
+</string-array>
+
+    <!-- PNG Document Export Dialogue Strings -->
+
+
+    <string name="png_export_title_success">PNG Export Complete</string>
+
+    <string name="png_export_title_fail">PNG Export Failed</string>
+
+    <!-- PDF Document Export Dialogue Strings -->
+
+
+    <string name="pdf_export_title_success">PDF Export Complete</string>
+
+    <string name="pdf_export_title_fail">PDF Export Failed</string>
+
+    <!-- PDF Images Export Dialogue Strings -->
+
+
+    <string name="pdf_images_export_title_success">PDF Export Complete</string>
+
+    <string name="pdf_images_export_title_fail">PDF Export Failed</string>
+
+    <!-- Common Export Dialogue Strings -->
+
+
+    <string name="export_file_message">Exported To File:</string>
+
+    <string name="export_folder_message">Exported To Folder</string>
+
+    <string name="export_button1">View</string>
 </resources>

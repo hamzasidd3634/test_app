@@ -23,6 +23,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="pdf_viewer"
         tools:replace="android:label"
+        android:theme="@style/Theme.AppCompat.Light"
         android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"
@@ -59,6 +60,45 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".pdf_sign.SampleCertificatePicker"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".pdf_sign.SampleCertificateViewer"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize"
+            android:label="@string/app_name"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".DocEditorActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|screenSize|smallestScreenSize|screenLayout|uiMode"
+            android:windowSoftInputMode="adjustResize"
+            android:label="@string/app_name">
+        </activity>
+
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
 
         <!--
  Don't delete the meta-data below.
